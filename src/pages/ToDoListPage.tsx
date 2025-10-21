@@ -3,6 +3,7 @@ import { Form } from "../components/Form/Form";
 import { Header } from "../components/Header/Header";
 import { TodoList } from "../components/TodoList/TodoList";
 import { ToDo } from "../models/todo-item";
+import { ToastContainer, toast } from "react-toastify";
 
 export const ToDoListPage = () => {
   const [todos, setTodos] = useState<ToDo[]>([
@@ -25,6 +26,9 @@ export const ToDoListPage = () => {
       isDone: false,
     };
     setTodos([...todos, newToDo]);
+    toast.info("Задача создана!", {
+      position: "bottom-right",
+    });
   };
 
   const updateToDo = (todoItem: ToDo) => {
@@ -37,6 +41,9 @@ export const ToDoListPage = () => {
     });
 
     setTodos(newTodos);
+    toast.warn("Статус задачи обновлен", {
+      position: "bottom-right",
+    });
   };
 
   const deleteToDo = (todoItem: ToDo) => {
@@ -45,6 +52,9 @@ export const ToDoListPage = () => {
     });
 
     setTodos(newTodos);
+    toast.success("Задача удалена. Прощай...", {
+      position: "bottom-right",
+    });
   };
 
   return (
@@ -52,6 +62,7 @@ export const ToDoListPage = () => {
       <Header />
       <Form createNewTODo={createNewTODo} />
       <TodoList todos={todos} updateToDo={updateToDo} deleteToDo={deleteToDo} />
+      <ToastContainer position="bottom-right" />
     </>
   );
 };
