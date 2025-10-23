@@ -1,15 +1,19 @@
-import { useState } from "react";
 import "./Form.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { clearText, setText } from "../../feature/formSlice";
 
 export const Form = (props: { createNewToDo: Function }) => {
-  const [text, setText] = useState<string>("");
+  // читаем текст из store
+  const text = useSelector((state: RootState) => state.form.text);
+  const dispatch = useDispatch();
 
   const formSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
 
     if (text) {
       props.createNewToDo(text);
-      setText("");
+      dispatch(clearText());
     }
   };
 
@@ -20,7 +24,7 @@ export const Form = (props: { createNewToDo: Function }) => {
           <input
             value={text}
             type="text"
-            onChange={(e) => setText(e.target.value)}
+            onChange={(e) => dispatch(setText(e.target.value))}
           />
           <button></button>
         </label>

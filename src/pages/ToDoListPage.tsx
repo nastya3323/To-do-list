@@ -10,8 +10,11 @@ export const ToDoListPage = () => {
   const todoList = useSelector((state: RootState) => state.todoList.todos);
   const dispatch = useDispatch();
 
-  const createNewToDo = (text: string) => {
-    dispatch(createAction(text));
+  // селектор для текста из формы
+  const formText = useSelector((state: RootState) => state.form.text);
+
+  const createNewToDo = () => {
+    dispatch(createAction(formText));
   };
 
   const updateToDo = (todoItem: ToDo) => {
