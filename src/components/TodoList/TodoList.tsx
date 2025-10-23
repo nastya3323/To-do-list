@@ -1,6 +1,6 @@
 import { ToDoListItem } from "./ToDoListItem/ToDoListItem";
-import "./ToDoList.scss";
 import { ToDo } from "../../models/todo-item";
+import { ToDoListContainer, ToDoList } from "./ToDoList.styled";
 
 export const TodoList = (props: {
   todos: ToDo[];
@@ -30,7 +30,7 @@ export const TodoList = (props: {
       })
       .map((item, index) => {
         return (
-          <ToDoListItem 
+          <ToDoListItem
             toDoItem={item}
             key={index}
             updateToDo={props.updateToDo}
@@ -41,12 +41,12 @@ export const TodoList = (props: {
   };
 
   return (
-    <div className="todo-container">
-      <ul className="todo-list failed">
+    <ToDoListContainer>
+      <ToDoList type="failed">
         {checkedList()}
         {/* <ToDoListItem toDoItem={todo1} /> */}
-      </ul>
-      <ul className="todo-list completed">
+      </ToDoList>
+      <ToDoList type="completed">
         {unCheckedList()}
 
         {/* <ToDoListItem toDoItem={todo2} /> */}
@@ -58,7 +58,7 @@ export const TodoList = (props: {
             <button className="btn-uncheck"></button>
           </div>
         </li> */}
-      </ul>
-    </div>
+      </ToDoList>
+    </ToDoListContainer>
   );
 };
