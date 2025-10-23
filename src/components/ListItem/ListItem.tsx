@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ToDo } from "../../../models/todo-item";
+import { ToDo } from "../../models/todo-item";
 import classes from "./ListItem.module.scss";
 
 export const ListItem = ({ todo }: { todo: ToDo }) => {
