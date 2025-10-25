@@ -12,11 +12,11 @@ export const TodoList = (props: {
       .filter((item) => {
         return !item.isDone;
       })
-      .map((item, index) => {
+      .map((item) => {
         return (
           <ToDoListItem
             toDoItem={item}
-            key={index}
+            key={item.id}
             updateToDo={props.updateToDo}
             deleteToDo={props.deleteToDo}
           />
@@ -28,11 +28,11 @@ export const TodoList = (props: {
       .filter((item) => {
         return item.isDone;
       })
-      .map((item, index) => {
+      .map((item) => {
         return (
           <ToDoListItem
             toDoItem={item}
-            key={index}
+            key={item.id}
             updateToDo={props.updateToDo}
             deleteToDo={props.deleteToDo}
           />

@@ -19,6 +19,7 @@ export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
 export const HeaderNavLink = styled(NavLink)`
@@ -28,5 +29,26 @@ export const HeaderNavLink = styled(NavLink)`
 
   &.active {
     color: #ffffff33;
+  }
+`;
+
+export const HeaderToggleBlock = styled.div`
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+`;
+
+export const HeaderToggleButton = styled.button`
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: #edf0f1;
+    color: #4682b4;
   }
 `;

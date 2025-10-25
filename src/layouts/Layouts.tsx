@@ -1,8 +1,14 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "../components/Header/Header";
 import { Helmet } from "react-helmet-async";
+import { GlobalStyle } from "../styles/GlobalStyle";
+import { ThemeProvider } from "styled-components";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 export const Layout = () => {
+  const theme = useSelector((state: RootState) => state.themeList.theme);
+
   return (
     <>
       <Helmet>
@@ -17,8 +23,11 @@ export const Layout = () => {
           rel="stylesheet"
         />
       </Helmet>
-      <Header />
-      <Outlet />
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Header />
+        <Outlet />
+      </ThemeProvider>
     </>
   );
 };
