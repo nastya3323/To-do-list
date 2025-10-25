@@ -22,5 +22,5 @@ export const router = createBrowserRouter(
       element: <NotFound />,
     },
   ],
-  { basename: "/todo-app" }
+  { basename: "/to-do-list" }
 );
